@@ -19,24 +19,24 @@ find /usr/lib /usr/local $HOME/.local | sort > $HOME/usr-local-7-after-mininet-i
 
 # --- Utils --- #
 git clone https://github.com/p4lang/tutorials
-sudo mv tutorials/utils /home/safeP4R
+sudo mv tutorials/utils /home/P4RType
 sudo rm -rf tutorials
-sudo chown -R safeP4R:safeP4R /home/safeP4R/utils
+sudo chown -R P4RType:P4RType /home/P4RType/utils
 
-sudo chown -R safeP4R:safeP4R files
+sudo chown -R P4RType:P4RType files
 sudo chmod +x files/send.py
 sudo chmod +x files/receive.py
-sudo mv files/* /home/safeP4R
+sudo mv files/* /home/P4RType
 sudo rm -rf files
 
 # --- Emacs --- #
 sudo cp p4_16-mode.el /usr/share/emacs/site-lisp/
-sudo mkdir /home/safeP4R/.emacs.d/
+sudo mkdir /home/P4RType/.emacs.d/
 echo "(autoload 'p4_16-mode' \"p4_16-mode.el\" \"P4 Syntax.\" t)" > init.el
 echo "(add-to-list 'auto-mode-alist '(\"\\.p4\\'\" . p4_16-mode))" | tee -a init.el
-sudo mv init.el /home/safeP4R/.emacs.d/
-sudo ln -s /usr/share/emacs/site-lisp/p4_16-mode.el /home/safeP4R/.emacs.d/p4_16-mode.el
-sudo chown -R safeP4R:safeP4R /home/safeP4R/.emacs.d/
+sudo mv init.el /home/P4RType/.emacs.d/
+sudo ln -s /usr/share/emacs/site-lisp/p4_16-mode.el /home/P4RType/.emacs.d/p4_16-mode.el
+sudo chown -R P4RType:P4RType /home/P4RType/.emacs.d/
 
 # --- Vim --- #
 cd ~
@@ -46,12 +46,12 @@ mkdir ftdetect
 mkdir syntax
 echo "au BufRead,BufNewFile *.p4      set filetype=p4" >> ftdetect/p4.vim
 echo "set bg=dark" >> ~/.vimrc
-sudo mv ~/.vimrc /home/safeP4R/.vimrc
+sudo mv ~/.vimrc /home/P4RType/.vimrc
 cp ~/p4.vim syntax/p4.vim
 cd ~
-sudo mv .vim /home/safeP4R/.vim
-sudo chown -R safeP4R:safeP4R /home/safeP4R/.vim
-sudo chown safeP4R:safeP4R /home/safeP4R/.vimrc
+sudo mv .vim /home/P4RType/.vim
+sudo chown -R P4RType:P4RType /home/P4RType/.vim
+sudo chown P4RType:P4RType /home/P4RType/.vimrc
 
 # --- Adding Desktop icons --- #
 DESKTOP=/home/${USER}/Desktop
@@ -79,9 +79,9 @@ Exec=/usr/bin/wireshark
 Comment[en_US]=
 EOF
 
-sudo mkdir -p /home/safeP4R/Desktop
-sudo mv /home/${USER}/Desktop/* /home/safeP4R/Desktop
-sudo chown -R safeP4R:safeP4R /home/safeP4R/Desktop/
+sudo mkdir -p /home/P4RType/Desktop
+sudo mv /home/${USER}/Desktop/* /home/P4RType/Desktop
+sudo chown -R P4RType:P4RType /home/P4RType/Desktop/
 
 # Do this last!
 sudo reboot

@@ -3,11 +3,11 @@
 # Print commands and exit on errors
 set -xe
 
-useradd -m -d /home/safeP4R -s /bin/bash safeP4R
-echo "safeP4R:safeP4R" | chpasswd
-echo "safeP4R ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/99_safeP4R
-chmod 440 /etc/sudoers.d/99_safeP4R
-usermod -aG vboxsf safeP4R
+useradd -m -d /home/P4RType -s /bin/bash P4RType
+echo "P4RType:sdn" | chpasswd
+echo "P4RType ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/99_P4RType
+chmod 440 /etc/sudoers.d/99_P4RType
+usermod -aG vboxsf P4RType
 
 # Install p4 logo as wallpaper
 mv /home/vagrant/p4-logo.png /usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png

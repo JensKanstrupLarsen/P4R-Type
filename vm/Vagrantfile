@@ -74,7 +74,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "release", primary: true do |release|
     release.vm.provider "virtualbox" do |v|
-      v.name = "SafeP4R Demo VM"# + Time.now.strftime(" %Y-%m-%d")
+      v.name = "P4R-Type Demo VM"# + Time.now.strftime(" %Y-%m-%d")
     end
     release.vm.provision "file", source: "patches/mininet-dont-install-python2-2022-apr.patch", destination: "/home/vagrant/patches/mininet-dont-install-python2-2022-apr.patch"
     release.vm.provision "file", source: "files", destination: "/home/vagrant/files"
