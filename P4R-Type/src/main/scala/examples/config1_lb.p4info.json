@@ -1,0 +1,108 @@
+{
+  "pkgInfo": {
+   "arch": "v1model"
+  },
+  "tables": [
+   {
+    "preamble": {
+     "id": 43479776,
+     "name": "Process.firewall",
+     "alias": "firewall"
+    },
+    "matchFields": [
+     {
+      "id": 1,
+      "name": "hdr.ipv4.dstAddr",
+      "bitwidth": 32,
+      "matchType": "LPM"
+     }
+    ],
+    "actionRefs": [
+     {
+      "id": 22338797
+     },
+     {
+      "id": 21257015
+     }
+    ],
+    "size": "1024"
+   },
+   {
+    "preamble": {
+     "id": 50014192,
+     "name": "Process.ipv4_lpm",
+     "alias": "ipv4_lpm"
+    },
+    "matchFields": [
+     {
+      "id": 1,
+      "name": "hdr.ipv4.dstAddr",
+      "bitwidth": 32,
+      "matchType": "LPM"
+     }
+    ],
+    "actionRefs": [
+     {
+      "id": 26706864
+     },
+     {
+      "id": 22338797
+     }
+    ],
+    "size": "1024"
+   }
+  ],
+  "actions": [
+   {
+    "preamble": {
+     "id": 21257015,
+     "name": "NoAction",
+     "alias": "NoAction",
+     "annotations": [
+      "@noWarn(\"unused\")"
+     ]
+    }
+   },
+   {
+    "preamble": {
+     "id": 22338797,
+     "name": "Process.drop",
+     "alias": "drop"
+    }
+   },
+   {
+    "preamble": {
+     "id": 26706864,
+     "name": "Process.ipv4_forward",
+     "alias": "ipv4_forward"
+    },
+    "params": [
+     {
+      "id": 1,
+      "name": "dstAddr",
+      "bitwidth": 48
+     },
+     {
+      "id": 2,
+      "name": "port",
+      "bitwidth": 9
+     }
+    ]
+   }
+  ],
+  "counters": [
+   {
+    "preamble": {
+     "id": 317023432,
+     "name": "Process.packetcounter",
+     "alias": "packetcounter"
+    },
+    "spec": {
+     "unit": "BOTH"
+    },
+    "size": "65536"
+   }
+  ],
+  "typeInfo": {}
+ }
+ 

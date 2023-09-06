@@ -1,0 +1,192 @@
+{
+  "pkgInfo": {
+   "arch": "v1model"
+  },
+  "tables": [
+   {
+    "preamble": {
+     "id": 38928829,
+     "name": "Process.nat_ingress",
+     "alias": "nat_ingress"
+    },
+    "matchFields": [
+     {
+      "id": 1,
+      "name": "hdr.ipv4.dstAddr",
+      "bitwidth": 32,
+      "matchType": "LPM"
+     },
+     {
+      "id": 2,
+      "name": "hdr.tcp.dstPort",
+      "bitwidth": 16,
+      "matchType": "EXACT"
+     }
+    ],
+    "actionRefs": [
+     {
+      "id": 33381451
+     },
+     {
+      "id": 21257015
+     }
+    ],
+    "size": "1024"
+   },
+   {
+    "preamble": {
+     "id": 40749844,
+     "name": "Process.nat_egress",
+     "alias": "nat_egress"
+    },
+    "matchFields": [
+     {
+      "id": 1,
+      "name": "hdr.ipv4.srcAddr",
+      "bitwidth": 32,
+      "matchType": "LPM"
+     },
+     {
+      "id": 2,
+      "name": "hdr.tcp.srcPort",
+      "bitwidth": 16,
+      "matchType": "EXACT"
+     }
+    ],
+    "actionRefs": [
+     {
+      "id": 25458652
+     },
+     {
+      "id": 21257015
+     }
+    ],
+    "size": "1024"
+   },
+   {
+    "preamble": {
+     "id": 43479776,
+     "name": "Process.firewall",
+     "alias": "firewall"
+    },
+    "matchFields": [
+     {
+      "id": 1,
+      "name": "hdr.ipv4.dstAddr",
+      "bitwidth": 32,
+      "matchType": "LPM"
+     }
+    ],
+    "actionRefs": [
+     {
+      "id": 22338797
+     },
+     {
+      "id": 21257015
+     }
+    ],
+    "size": "1024"
+   },
+   {
+    "preamble": {
+     "id": 39373426,
+     "name": "Process.ipv4_table",
+     "alias": "ipv4_table"
+    },
+    "matchFields": [
+     {
+      "id": 1,
+      "name": "hdr.ipv4.dstAddr",
+      "bitwidth": 32,
+      "matchType": "LPM"
+     }
+    ],
+    "actionRefs": [
+     {
+      "id": 22361362
+     },
+     {
+      "id": 22338797
+     }
+    ],
+    "size": "1024"
+   }
+  ],
+  "actions": [
+   {
+    "preamble": {
+     "id": 21257015,
+     "name": "NoAction",
+     "alias": "NoAction",
+     "annotations": [
+      "@noWarn(\"unused\")"
+     ]
+    }
+   },
+   {
+    "preamble": {
+     "id": 22338797,
+     "name": "Process.drop",
+     "alias": "drop"
+    }
+   },
+   {
+    "preamble": {
+     "id": 22361362,
+     "name": "Process.forward_packet",
+     "alias": "forward_packet"
+    },
+    "params": [
+     {
+      "id": 1,
+      "name": "dstAddr",
+      "bitwidth": 48
+     },
+     {
+      "id": 2,
+      "name": "port",
+      "bitwidth": 9
+     }
+    ]
+   },
+   {
+    "preamble": {
+     "id": 33381451,
+     "name": "Process.nat_translate_in",
+     "alias": "nat_translate_in"
+    },
+    "params": [
+     {
+      "id": 1,
+      "name": "dstAddr",
+      "bitwidth": 32
+     },
+     {
+      "id": 2,
+      "name": "dstPort",
+      "bitwidth": 16
+     }
+    ]
+   },
+   {
+    "preamble": {
+     "id": 25458652,
+     "name": "Process.nat_translate_eg",
+     "alias": "nat_translate_eg"
+    },
+    "params": [
+     {
+      "id": 1,
+      "name": "srcAddr",
+      "bitwidth": 32
+     },
+     {
+      "id": 2,
+      "name": "srcPort",
+      "bitwidth": 16
+     }
+    ]
+   }
+  ],
+  "typeInfo": {}
+ }
