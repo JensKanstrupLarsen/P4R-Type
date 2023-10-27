@@ -5,6 +5,10 @@ This repository contains:
   * In `P4R-Type/`: The code for the P4R-Type API and type generator, as well as examples that use the P4R-Type API.
   * In `vm/`: A virtual machine that sets up a simulation network using mininet, which can be used to test the API.
 
+**Note for OOPSLA artifact version:** As an alternative to building the VM image with Vagrant, the top folder also contains the file `P4R-Type_Demo_VM.ova`, a ready-to-use VM image. It can be imported with the VirtualBox interface using the default settings. In case you use this method for setting up the VM, skip the first three steps of the **Kick-the-Tires Guide** and start the VM directly from VirtualBox instead.
+
+The OOPSLA artifact version which includes the VM image can be found [here](https://dl.acm.org/do/10.1145/3580420).
+
 ## Prerequisites
 
 __This artifact requires:__
@@ -18,18 +22,18 @@ __This artifact requires:__
 From now on, we write `$ROOT` to denote the root directory of the artifact.
 
   1. Navigate to the `$ROOT/vm/` directory.
-  3. Run `vagrant up` to build and run the VM. Building the VM will take 10-15 minutes.
-  4. When the `vagrant` building procedure is complete, the VM will reboot.
+  2. Run `vagrant up` to build and run the VM. Building the VM will take 10-15 minutes.
+  3. When the `vagrant` building procedure is complete, the VM will reboot.
      (From now on, you can launch the VM from VirtualBox, without using `vagrant` again.)
-  5. When the VM presents a graphical log-in prompt:
+  4. When the VM presents a graphical log-in prompt:
       1. Log on as user __P4RType__ with the password `sdn`.
       2. Open a terminal in the VM and run `make test` (in the home directory of the user P4RType).
          This will start the mininet network simulation with four hosts and four switches `s1`..`s4`
          (see the `topology.json` file for the layout).
          It also applies the P4 configuration `config1` to `s1` and `s2`, and `config2` to `s3` and `s4`.
          You will see the `mininet>` prompt and the message `Ready to receive requests!`.
-  6. Now, on the **host** machine that is running the VM, navigate to the `$ROOT/P4R-Type/` directory.
-  7. Run `sbt "runMain p4rtypetest"`. This will compile and run the program
+  5. Now, on the **host** machine that is running the VM, navigate to the `$ROOT/P4R-Type/` directory.
+  6. Run `sbt "runMain p4rtypetest"`. This will compile and run the program
      `src/main/scala/examples/p4rtypetest.scala`, which connects to the mininet network in the VM and
      sends some test queries to the `s1` switch.
 
